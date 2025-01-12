@@ -1,20 +1,13 @@
 import random
 from pathlib import Path
 
-filePath = Path("/home/harry/Dev/Python/PasswordGenerator/Sources/words.txt")
+filePath = Path("path/to/file.txt")
 
-if filePath.exists():
-    pass
-else:
-	print("Invalid path")
-	exit()
+while filePath.exists == False:
+    print("Invalid path")
+    exit()	
 
-with filePath.open() as file:
-	for count, line in enumerate(file):
-		lineTotal = (count + 1)
-		pass
-
-with filePath.open() as file:
-    content = file.readlines()
+content = filePath.read_text().splitlines()
+lineTotal = len(content)
 
 print(content[random.randint(0, int(lineTotal))])
