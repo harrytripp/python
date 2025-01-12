@@ -10,4 +10,4 @@ while filePath.exists == False:
 content = filePath.read_text().splitlines()
 lineTotal = len(content)
 
-print(content[random.randint(0, int(lineTotal))])
+print(''.join(random.sample(content, 3)))
