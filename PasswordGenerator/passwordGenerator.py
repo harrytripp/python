@@ -2,20 +2,24 @@ import random
 from pathlib import Path
 
 filePath = Path("path/to/file.txt")
-minPwdLength = 8
-maxPwdLength = 16
+minPwdLength = 15
+maxPwdLength = 15
+minStrLengh = 4
 
 while filePath.exists == False:
     print("Invalid path")
     exit()	
 
-content = filePath.read_text().splitlines()
+contentRaw = filePath.read_text().splitlines()
+content = [line for line in contentRaw if len(line) != minStrLengh]
 lineTotal = len(content)
 
-password = (''.join(random.sample(content, 3)))
-print(password)
+def generate():
+    password = (''.join(random.sample(content, 3)))
 
-if len(password) >= minPwdLength and len(password) <= maxPwdLength:
-    print(password)
-else:
-    pass #TODO reroll password
+    if len(password) >= minPwdLength and len(password) <= maxPwdLength:
+        print(password)
+    else:
+        generate()
+
+generate()
